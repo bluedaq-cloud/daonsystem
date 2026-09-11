@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>브랜드앱 ROI 계산기 | 다온시스템</title>
+<meta name="description" content="배달앱 수수료와 다온시스템 브랜드앱 도입 비용을 비교해 월 절감액과 투자회수기간을 바로 계산해보세요.">
+<meta property="og:title" content="브랜드앱 ROI 계산기 | 다온시스템">
+<meta property="og:description" content="배달앱 수수료 대비 브랜드앱 도입 시 절감액과 회수기간을 확인해보세요.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.daonsysteminc.com/roi-calculator.html">
+<link rel="canonical" href="https://www.daonsysteminc.com/roi-calculator.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23142B52'/%3E%3Ctext x='32' y='44' font-size='34' font-weight='bold' font-family='Arial' fill='%23FF6B00' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"></noscript>
+<style>
+:root{
+  --navy:#142B52; --navy2:#1D3A6B; --orange:#FF6B00; --orange2:#FF8A3D;
+  --bg:#F3F6FB; --line:#E3E9F2; --txt:#1F2A3A; --sub:#596473; --muted:#9AA5B5;
+  --good:#14705A; --good-bg:#E4F1EB;
+  --shadow-sm:0 2px 10px rgba(20,43,82,.06);
+  --shadow-md:0 10px 30px rgba(20,43,82,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{font-family:'Pretendard','Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--txt);background:#fff;line-height:1.6;word-break:keep-all;letter-spacing:-.01em}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}
+.eyebrow{color:var(--orange);font-weight:800;font-size:.82rem;letter-spacing:.14em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:'';width:18px;height:2px;background:var(--orange);border-radius:2px}
+h2{color:var(--navy);font-size:clamp(1.4rem,3.2vw,1.75rem);font-weight:800;margin-bottom:10px;letter-spacing:-.02em}
+.lead{color:var(--sub);font-size:.98rem;margin-bottom:0}
+
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--navy);font-size:1.05rem}
+.menu{display:flex;gap:22px;font-size:.9rem;font-weight:600;color:var(--sub)}
+.menu a:hover{color:var(--navy)}
+.cta-mini{background:var(--orange);color:#fff;font-weight:700;font-size:.85rem;padding:8px 14px;border-radius:20px}
+@media(max-width:820px){.menu{display:none}}
+
+.tool-hero{position:relative;background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 60%,#27498a 100%);color:#fff;padding:52px 0;overflow:hidden}
+.tool-hero::before{content:'';position:absolute;width:380px;height:380px;border-radius:50%;filter:blur(70px);background:radial-gradient(circle,rgba(255,107,0,.35),transparent 70%);top:-160px;right:-100px}
+.tool-hero .wrap{position:relative;z-index:1}
+.tool-hero .quote{color:var(--orange2);font-weight:800;font-size:.9rem;margin-bottom:12px}
+.tool-hero h1{font-size:clamp(1.5rem,4.2vw,2.2rem);font-weight:900;line-height:1.4;margin-bottom:14px;letter-spacing:-.02em}
+.tool-hero p{color:#C9D4E6;font-size:1rem;max-width:600px}
+
+.calc-grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:900px){.calc-grid{grid-template-columns:1fr 1fr}}
+
+.panel{background:var(--bg);border-radius:20px;padding:28px}
+.panel h3{color:var(--navy);font-size:1.05rem;margin-bottom:18px}
+
+.field{margin-bottom:20px}
+.field label{display:flex;justify-content:space-between;align-items:baseline;font-size:.88rem;font-weight:700;color:var(--txt);margin-bottom:8px}
+.field label .hint{font-weight:500;color:var(--muted);font-size:.78rem}
+.field .input-row{display:flex;align-items:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:0 14px;transition:border-color .2s ease}
+.field .input-row:focus-within{border-color:var(--orange)}
+.field input[type=number]{
+  flex:1;border:0;outline:0;background:transparent;
+  font-family:'Pretendard',sans-serif;font-size:1.05rem;font-weight:700;color:var(--navy);
+  padding:12px 0;width:100%;
+  -moz-appearance:textfield;
+}
+.field input[type=number]::-webkit-outer-spin-button,
+.field input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.field .unit{color:var(--sub);font-size:.9rem;font-weight:600;white-space:nowrap;padding-left:8px}
+.field input[type=range]{width:100%;accent-color:var(--orange);margin-top:6px}
+.field .range-val{font-size:.82rem;color:var(--sub);margin-top:4px;text-align:right}
+
+.result-panel{background:var(--navy);color:#fff;border-radius:20px;padding:28px;display:flex;flex-direction:column}
+.result-panel h3{color:#fff;font-size:1.05rem;margin-bottom:4px}
+.result-panel .sub{color:#AEBEDA;font-size:.85rem;margin-bottom:20px}
+.headline-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:20px;margin-bottom:14px}
+.headline-stat .label{font-size:.8rem;color:#B9C5DC;font-weight:600;margin-bottom:6px}
+.headline-stat .value{font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:var(--orange2);letter-spacing:-.02em}
+.headline-stat .value small{font-size:.9rem;color:#C9D4E6;font-weight:600}
+
+.mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.mini-stat{background:rgba(255,255,255,.06);border-radius:12px;padding:14px}
+.mini-stat .label{font-size:.72rem;color:#AEBEDA;font-weight:600;margin-bottom:4px;letter-spacing:.02em}
+.mini-stat .value{font-size:1.05rem;font-weight:800;color:#fff}
+
+.breakdown{background:rgba(255,255,255,.05);border-radius:12px;padding:16px 18px;font-size:.85rem;color:#C9D4E6;margin-bottom:auto}
+.breakdown div{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.breakdown div:last-child{border-bottom:0}
+.breakdown b{color:#fff}
+
+.result-panel .btn{margin-top:20px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border-radius:28px;font-weight:700;font-size:.95rem;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.btn-o{background:var(--orange);color:#fff;box-shadow:0 10px 24px rgba(255,107,0,.35)}
+.btn-o:hover{background:var(--orange2);transform:translateY(-2px)}
+
+.assump{margin-top:32px;border:1px dashed var(--line);border-radius:14px;padding:20px 22px;font-size:.86rem;color:var(--sub)}
+.assump h4{color:var(--navy);font-size:.95rem;margin-bottom:10px}
+.assump ul{padding-left:18px}
+.assump li{margin-bottom:6px}
+
+footer{background:#0E1F3D;color:var(--muted);font-size:.8rem;text-align:center;padding:22px 16px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><img src="assets/d-mark.png" alt="다온시스템 로고" style="height:26px;width:auto">다온시스템</a>
+    <nav class="menu">
+      <a href="index.html#about">회사소개</a><a href="index.html#lineup">솔루션</a><a href="index.html#brandapp">브랜드앱</a><a href="index.html#contact">문의</a>
+    </nav>
+    <a class="cta-mini" href="tel:010-3350-2125">전화 상담</a>
+  </div>
+</header>
+
+<div class="tool-hero">
+  <div class="wrap">
+    <div class="quote">BRAND APP ROI CALCULATOR</div>
+    <h1>배달앱 수수료, 브랜드앱으로 바꾸면<br>얼마나 아낄 수 있을까요?</h1>
+    <p>지금 배달앱에 내고 있는 수수료와, 다온시스템 브랜드앱 도입 비용을 비교해서 월 절감액과 투자회수기간을 바로 계산해드립니다.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="calc-grid">
+
+      <div class="panel">
+        <h3>매장 정보를 입력하세요</h3>
+
+        <div class="field">
+          <label>월 배달앱 매출 <span class="hint">배달앱을 통해 발생하는 월 평균 매출</span></label>
+          <div class="input-row">
+            <input type="number" id="deliverySales" value="15000000" min="0" step="100000" inputmode="numeric">
+            <span class="unit">원</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>배달앱 수수료율 <span class="hint">중개수수료+결제수수료 등 실제 부담 비율</span></label>
+          <input type="range" id="deliveryFeeRate" min="3" max="15" step="0.1" value="9.8">
+          <div class="range-val"><span id="deliveryFeeRateLabel">9.8</span>%</div>
+        </div>
+
+        <div class="field">
+          <label>브랜드앱 전환 예상 비율 <span class="hint">배달앱 주문 중 브랜드앱으로 옮겨올 것으로 예상하는 비중</span></label>
+          <input type="range" id="shiftRate" min="10" max="80" step="5" value="30">
+          <div class="range-val"><span id="shiftRateLabel">30</span>%</div>
+        </div>
+
+        <div class="field">
+          <label>매장 수 <span class="hint">유지보수비는 매장당 부과</span></label>
+          <div class="input-row">
+            <input type="number" id="storeCount" value="1" min="1" step="1" inputmode="numeric">
+            <span class="unit">개</span>
+          </div>
+        </div>
+
+        <div class="field" style="margin-bottom:0">
+          <label>브랜드앱 초기 구축비 <span class="hint">커스터마이징 범위에 따라 변동 (기본 패키지 기준)</span></label>
+          <div class="input-row">
+            <input type="number" id="setupCost" value="10000000" min="0" step="500000" inputmode="numeric">
+            <span class="unit">원</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-panel">
+        <h3>계산 결과</h3>
+        <div class="sub">아래 결과는 입력값에 따라 실시간으로 바뀝니다</div>
+
+        <div class="headline-stat">
+          <div class="label">월 순 절감액</div>
+          <div class="value"><span id="monthlySaving">0</span><small>원 / 월</small></div>
+        </div>
+
+        <div class="mini-stats">
+          <div class="mini-stat">
+            <div class="label">투자회수기간</div>
+            <div class="value"><span id="paybackMonths">-</span></div>
+          </div>
+          <div class="mini-stat">
+            <div class="label">1년 누적 절감액</div>
+            <div class="value"><span id="yearSaving">0</span>원</div>
+          </div>
+        </div>
+
+        <div class="breakdown">
+          <div><span>배달앱에 내던 수수료(전환분)</span><b id="bdBefore">0원</b></div>
+          <div><span>브랜드앱 결제수수료(PG 2.7%)</span><b id="bdPg">0원</b></div>
+          <div><span>브랜드앱 월 유지보수비</span><b id="bdMaint">0원</b></div>
+        </div>
+
+        <a class="btn btn-o" href="index.html#contact">이 결과로 정확한 견적 상담받기</a>
+      </div>
+
+    </div>
+
+    <div class="assump">
+      <h4>계산 기준</h4>
+      <ul>
+        <li>브랜드앱 결제수수료(PG)는 2.7%, 매장당 월 유지보수비는 1만원으로 계산합니다 — 다온시스템 브랜드앱 기본 패키지 기준입니다.</li>
+        <li>배달앱 수수료율과 전환 비율은 예시로 조정 가능한 값입니다. 실제 이용 중인 배달앱 계약 조건에 맞춰 입력하시면 더 정확합니다.</li>
+        <li>초기 구축비는 커스터마이징 범위·매장 수에 따라 달라질 수 있어 정확한 금액은 상담을 통해 확인해드립니다.</li>
+        <li>알림톡·SMS 발송비, 본인인증비 등 부가 비용은 이 계산에 포함되어 있지 않습니다.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 DAON SYSTEM. All rights reserved. · www.daonsysteminc.com</footer>
+
+<script>
+const fmt = n => Math.round(n).toLocaleString('ko-KR');
+
+const els = {
+  deliverySales: document.getElementById('deliverySales'),
+  deliveryFeeRate: document.getElementById('deliveryFeeRate'),
+  shiftRate: document.getElementById('shiftRate'),
+  storeCount: document.getElementById('storeCount'),
+  setupCost: document.getElementById('setupCost'),
+};
+
+const PG_RATE = 0.027;
+const MAINT_PER_STORE = 10000;
+
+function calc(){
+  const sales = Math.max(0, Number(els.deliverySales.value) || 0);
+  const feeRate = Math.max(0, Number(els.deliveryFeeRate.value) || 0) / 100;
+  const shift = Math.max(0, Number(els.shiftRate.value) || 0) / 100;
+  const stores = Math.max(1, Number(els.storeCount.value) || 1);
+  const setup = Math.max(0, Number(els.setupCost.value) || 0);
+
+  document.getElementById('deliveryFeeRateLabel').textContent = (feeRate*100).toFixed(1);
+  document.getElementById('shiftRateLabel').textContent = Math.round(shift*100);
+
+  const shiftedSales = sales * shift;
+  const beforeFee = shiftedSales * feeRate;
+  const pgFee = shiftedSales * PG_RATE;
+  const maint = MAINT_PER_STORE * stores;
+
+  const monthlySaving = beforeFee - pgFee - maint;
+  const yearSaving = monthlySaving * 12 - setup;
+
+  document.getElementById('bdBefore').textContent = fmt(beforeFee) + '원';
+  document.getElementById('bdPg').textContent = fmt(pgFee) + '원';
+  document.getElementById('bdMaint').textContent = fmt(maint) + '원';
+
+  document.getElementById('monthlySaving').textContent = fmt(monthlySaving);
+  document.getElementById('yearSaving').textContent = fmt(yearSaving);
+
+  const paybackEl = document.getElementById('paybackMonths');
+  if(monthlySaving > 0 && setup > 0){
+    const months = setup / monthlySaving;
+    paybackEl.textContent = months < 1 ? '1개월 미만' : Math.ceil(months) + '개월';
+  }else if(setup <= 0){
+    paybackEl.textContent = '즉시';
+  }else{
+    paybackEl.textContent = '회수 어려움';
+  }
+}
+
+Object.values(els).forEach(el => el.addEventListener('input', calc));
+calc();
+</script>
+</body>
+</html>
