@@ -115,6 +115,10 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdro
 .tile h4{color:var(--navy);font-size:.95rem;margin-bottom:4px}
 .tile p{color:var(--sub);font-size:.8rem;line-height:1.5}
 .tile.dark h4{color:#fff}.tile.dark p{color:#C9D4E6}
+.sysdiagram{margin-top:40px;background:var(--bg);border:1px solid var(--line);border-radius:20px;padding:26px 22px 18px}
+.sysdiagram h3{color:var(--navy);font-size:1.15rem;margin-bottom:6px}
+.sysdiagram p{color:var(--sub);font-size:.9rem;margin-bottom:18px}
+.sysdiagram img{width:100%;height:auto;border-radius:12px}
 
 /* solutions detail */
 .sol{display:grid;grid-template-columns:1fr;gap:20px;align-items:center;background:var(--bg);border-radius:20px;padding:26px;margin-bottom:20px;transition:box-shadow .3s ease,transform .3s ease}
@@ -285,6 +289,11 @@ footer{background:#0E1F3D;color:var(--muted);font-size:.8rem;text-align:center;p
       <div class="tile r-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M7 15l4-5 3 3 5-6"/></svg></div><h4>매장관리 App·Web</h4><p>실시간 매출통계 · 상품·품절 관리</p></div>
       <div class="tile r-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div><h4>결제·페이</h4><p>카드·간편결제·소프트POS · VAN/PG 연동</p></div>
       <div class="tile r-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="12" rx="2"/><path d="M12 8V5M9 5h6"/><circle cx="9.5" cy="14" r="1"/><circle cx="14.5" cy="14" r="1"/><path d="M2 12v4M22 12v4"/></svg></div><h4>서빙로봇·AI</h4><p>서빙로봇 연동 · AI 추천·알림톡</p></div>
+    </div>
+    <div class="sysdiagram reveal">
+      <h3>외식매장 전체 시스템 구성도</h3>
+      <p>키오스크·QR·앱 등 모든 주문 채널이 하나의 통합 Back-End로 모이고, 알림톡·DID·매장관리까지 실시간으로 연결됩니다.</p>
+      <img src="assets/system-diagram.svg" alt="외식매장 전체 시스템 구성도 — 키오스크·QR주문·모바일앱·POS·KDS가 통합 Back-End로 연결되고 알림톡·대면전달·DID·매장관리 웹/앱으로 이어지는 구조" loading="lazy">
     </div>
     <p style="color:var(--muted);font-size:.82rem;margin-top:16px">* 모든 솔루션은 하나의 통합 Back-end로 연동되어 메뉴·결제·매출 데이터를 일원화하여 관리합니다.</p>
   </div>
